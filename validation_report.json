@@ -1,0 +1,71 @@
+{
+  "validation_timestamp": "2025-06-20T14:41:40.465076",
+  "input_files": {
+    "pdf_path": "test/sales_core.pdf",
+    "markdown_path": "output/sales_cloud_basics.md"
+  },
+  "pdf_analysis": {
+    "file_size_mb": 13.62,
+    "total_elements": 602,
+    "total_characters": 1328748,
+    "total_words": 203132,
+    "total_sentences": 12480,
+    "potential_headings": 0,
+    "key_terms_identified": 50
+  },
+  "markdown_analysis": {
+    "file_size_kb": 10.17,
+    "total_characters": 10227,
+    "clean_characters": 9749,
+    "total_words": 1514,
+    "structure": {
+      "main_topics": 1,
+      "capabilities": 5,
+      "features": 19,
+      "descriptions": 19,
+      "functionality_items": 0,
+      "use_cases": 19
+    }
+  },
+  "coverage_metrics": {
+    "content_coverage_percent": 0.73,
+    "word_coverage_percent": 2.82,
+    "key_terms_coverage_percent": 52.0,
+    "heading_coverage_percent": 0,
+    "structure_completeness_percent": 100,
+    "compression_ratio": 129.93,
+    "information_density": 12.55,
+    "pdf_headings_found": 0,
+    "markdown_headings_created": 19,
+    "heading_matches": 0,
+    "missing_key_terms": [
+      "permissions",
+      "person",
+      "unlimited",
+      "experience",
+      "forecast",
+      "select",
+      "classic",
+      "professional",
+      "using",
+      "price"
+    ],
+    "unique_markdown_terms": [
+      "leverage",
+      "quickly",
+      "teams",
+      "regions,",
+      "artificial",
+      "criteria",
+      "data.",
+      "personnel",
+      "relationships",
+      "accessed"
+    ]
+  },
+  "quality_assessment": {
+    "overall_score": 55.82,
+    "content_preservation": "Poor",
+    "structure_quality": "Excellent"
+  }
+}
