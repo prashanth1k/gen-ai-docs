@@ -4,17 +4,35 @@ A Python CLI tool that converts PDF documents into RAG-optimized Markdown files 
 
 ## Features
 
+### Core Processing
+
 - **Ultra-fast PDF text extraction** (default mode - no external dependencies)
-- **Parallel processing** with configurable workers for faster generation
-- **Comprehensive content processing** - ensures ALL document content is processed
-- **Smart memory management** - automatically handles large documents
+- **Parallel processing by default** - 60-80% faster with configurable workers
+- **Comprehensive content processing** - guarantees ALL document content is processed (no content discarded)
+- **Smart memory management** - automatically handles large documents with optimal chunking
+- **Automatic capability scaling** - creates additional capabilities for very large documents
+
+### AI-Powered Generation
+
 - Generate structured outlines automatically using AI
 - Extract and organize content by capabilities and features
+- **Configurable AI models** - choose from multiple Gemini models
+- **Adjustable parameters** - chunk size, overlap, context limits, similarity results
 - Create RAG-optimized markdown with consistent formatting
+
+### Processing Options
+
+- **Two processing strategies**: Sequential chunking (comprehensive) vs Vector search (targeted)
 - Vector-based content retrieval for relevant section extraction
-- Optional enhanced parsing modes for better formatting
-- **Configurable AI parameters** - model, chunk size, context limits
-- **Built-in validation** with detailed quality metrics
+- Optional enhanced parsing modes for better formatting (requires Poppler)
+- **Memory-safe chunking** - maintains ≤150K character chunks regardless of document size
+
+### Quality & Validation
+
+- **Built-in validation** with comprehensive quality metrics
+- **Performance tracking** - detailed processing statistics and timing
+- **Quality scoring** - overall assessment with actionable recommendations
+- Content coverage, key terms analysis, and structure completeness metrics
 
 ## Installation
 
@@ -267,7 +285,9 @@ The tool generates markdown files with this structure:
 
 3. **API Key Error**: Make sure your `.env` file exists and contains a valid Gemini API key
 
-4. **Memory Issues**: For large PDFs, the tool may need more memory due to vector operations
+4. **Memory Issues**: For large PDFs, use `--smart-memory` or reduce `--parallel` workers
+
+5. **Performance Issues**: Adjust `--parallel` workers based on your system (default: 2)
 
 ### Error Messages
 
@@ -276,6 +296,7 @@ The tool generates markdown files with this structure:
 - `Failed to parse JSON response`: The AI response was malformed, try again
 - `PyPDF2 not installed`: Run `pip install -r requirements.txt`
 - `poppler installed and in PATH`: Only needed for `--enhanced` or `--hi-res` modes
+- `--max-workers not recognized`: Use `--parallel N` instead (consolidated option)
 
 ## Performance Tips
 
@@ -342,53 +363,6 @@ The validation helps you:
 - **Compare approaches** - Which processing mode works best for your PDFs?
 - **Track improvements** - Measure quality over time
 
-## Recent Improvements
-
-### v2.0 - Comprehensive Processing & Performance
-
-**🚀 Major Performance Improvements:**
-
-- **Parallel processing by default** - 60-80% faster with 2-worker processing
-- **Consolidated `--parallel` option** - specify worker count directly (e.g., `--parallel 4`)
-- **Smart memory management** - automatic optimization for large documents
-
-**📄 Complete Content Processing:**
-
-- **Fixed content discarding issue** - ALL document content is now processed
-- **Automatic capability scaling** - creates additional capabilities for large documents
-- **Memory-safe chunking** - maintains optimal chunk sizes regardless of document size
-- **No content loss guarantee** - eliminates "characters not processed" messages
-
-**⚙️ Enhanced Configuration:**
-
-- **Configurable AI models** - choose from multiple Gemini models
-- **Adjustable parameters** - chunk size, overlap, context limits, similarity results
-- **Processing strategy options** - sequential chunking vs. vector search
-- **Advanced CLI options** - fine-tune processing for your specific needs
-
-**📊 Improved Validation:**
-
-- **Comprehensive quality metrics** - coverage, structure, key terms analysis
-- **Performance tracking** - detailed processing statistics and timing
-- **Quality scoring** - overall assessment with actionable recommendations
-
-### Migration from v1.x
-
-**Breaking Changes:**
-
-- `--max-workers` removed - use `--parallel N` instead
-- Parallel processing now enabled by default (was opt-in)
-
-**Recommended Updates:**
-
-```bash
-# Old v1.x command
-python main.py process --input-pdf doc.pdf --max-workers 4
-
-# New v2.0 command
-python main.py process --input-pdf doc.pdf --parallel 4
-```
-
 ## License
 
-This project is open source. Feel free to modify and distribute as needed.
+This project is licensed under the MIT License.
